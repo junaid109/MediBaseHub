@@ -1,0 +1,85 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:MediHub.App.Views"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+             x:Class="MediHub.App.Views.MainLayoutView">
+    
+    <UserControl.Styles>
+        <Style Selector="ListBoxItem">
+             <Setter Property="Padding" Value="12 8"/>
+             <Setter Property="CornerRadius" Value="8"/>
+             <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}"/>
+             <Setter Property="Background" Value="Transparent"/>
+             <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                    <BrushTransition Property="Foreground" Duration="0:0:0.2"/>
+                </Transitions>
+             </Setter>
+        </Style>
+        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+             <Setter Property="Background" Value="#1AFFFFFF"/>
+             <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+        </Style>
+        <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+             <Setter Property="Background" Value="{DynamicResource PrimaryLightColor}"/>
+             <Setter Property="Foreground" Value="#0F172A"/>
+             <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid ColumnDefinitions="260, *">
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource SurfaceLightBrush}" BorderThickness="0 0 1 0">
+            <Grid RowDefinitions="Auto, *, Auto">
+                <!-- Logo -->
+                <StackPanel Grid.Row="0" Margin="24 32">
+                    <TextBlock Text="Vitality" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                    <TextBlock Text="HealthOS" FontSize="14" Foreground="{DynamicResource PrimaryColor}" Margin="0 -4 0 0" FontWeight="SemiBold"/>
+                </StackPanel>
+
+                <!-- Navigation -->
+                <ListBox Grid.Row="1" Margin="12" Background="Transparent" SelectedIndex="0" SelectionChanged="OnNavigationChanged">
+                    <ListBoxItem>Dashboard</ListBoxItem>
+                    <ListBoxItem>Schedule</ListBoxItem>
+                    <ListBoxItem>Patients</ListBoxItem>
+                    <ListBoxItem>Cases</ListBoxItem>
+                    <ListBoxItem>Reports</ListBoxItem>
+                </ListBox>
+
+                <!-- User Profile -->
+                 <Border Grid.Row="2" Margin="16" Padding="12" Background="#10FFFFFF" CornerRadius="8">
+                    <Grid ColumnDefinitions="Auto, *">
+                        <Border Width="32" Height="32" CornerRadius="16" Background="{DynamicResource PrimaryBrush}"/>
+                        <StackPanel Grid.Column="1" Margin="12 0 0 0" VerticalAlignment="Center">
+                             <TextBlock Text="Dr. Smith" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                             <TextBlock Text="Admin" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        </StackPanel>
+                    </Grid>
+                 </Border>
+            </Grid>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1" RowDefinitions="Auto, *">
+            <!-- Top Bar -->
+            <Border Grid.Row="0" Height="64" Padding="32 0" BorderBrush="{DynamicResource SurfaceLightBrush}" BorderThickness="0 0 0 1">
+                <Grid ColumnDefinitions="*, Auto">
+                    <TextBlock Text="Patients" VerticalAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                    
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
+                        <TextBox Watermark="Search..." Width="200" Background="{DynamicResource SurfaceBrush}" BorderThickness="0" CornerRadius="6" Padding="8"/>
+                        <Button Classes="Primary" Content="+ New Patient"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Page Content -->
+            <ContentControl Grid.Row="1" Name="PageContent" Padding="32">
+                 <views:PatientListView/>
+            </ContentControl>
+        </Grid>
+    </Grid>
+</UserControl>

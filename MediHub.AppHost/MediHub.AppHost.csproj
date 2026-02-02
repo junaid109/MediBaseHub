@@ -1,0 +1,16 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.1.0">
+
+  <ItemGroup>
+    <ProjectReference Include="..\MediHub.API\MediHub.API.csproj" />
+    <ProjectReference Include="..\MediHub.App\MediHub.App.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>6f2ee613-7dc9-4f66-85c2-e8b8b94e780e</UserSecretsId>
+  </PropertyGroup>
+
+</Project>

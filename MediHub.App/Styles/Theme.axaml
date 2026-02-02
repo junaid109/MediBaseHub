@@ -1,0 +1,84 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StyleInclude Source="avares://Avalonia.Themes.Fluent/FluentTheme.xaml"/>
+    
+    <Styles.Resources>
+        <!-- Primary Colors (Teal/Emerald Modern) -->
+        <Color x:Key="PrimaryColor">#10B981</Color>
+        <Color x:Key="PrimaryDarkColor">#059669</Color>
+        <Color x:Key="PrimaryLightColor">#34D399</Color>
+        
+        <!-- Background Colors (Dark/Slate) -->
+        <Color x:Key="BackgroundColor">#0F172A</Color>
+        <Color x:Key="SurfaceColor">#1E293B</Color>
+        <Color x:Key="SurfaceLightColor">#334155</Color>
+        
+        <!-- Text Colors -->
+        <Color x:Key="TextPrimaryColor">#F8FAFC</Color>
+        <Color x:Key="TextSecondaryColor">#94A3B8</Color>
+
+        <!-- Brushes -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+        <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDarkColor}"/>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}"/>
+        <SolidColorBrush x:Key="SurfaceLightBrush" Color="{StaticResource SurfaceLightColor}"/>
+        <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}"/>
+        <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}"/>
+        
+        <!-- Fonts -->
+        <FontFamily x:Key="MainFont">Segoe UI, Inter, Roboto, Arial</FontFamily>
+        
+        <!-- Icons -->
+        <StreamGeometry x:Key="IconCalendar">M19,4H18V2H16V4H8V2H6V4H5C3.89,4 3,4.9 3,6V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V6A2,2 0 0,0 19,4M19,20H5V10H19V20M19,8H5V6H19V8M9,14H7V12H9V14M13,14H11V12H13V14M17,14H15V12H17V14M9,18H7V16H9V18M13,18H11V16H13V18M17,18H15V16H17V18Z</StreamGeometry>
+        <StreamGeometry x:Key="IconDocument">M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z</StreamGeometry>
+        <StreamGeometry x:Key="IconUser">M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z</StreamGeometry>
+        <StreamGeometry x:Key="IconChart">M3,22V8H7V22H3M10,22V2H14V22H10M17,22V14H21V22H17Z</StreamGeometry>
+    </Styles.Resources>
+    
+    <!-- Global Window Style -->
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource MainFont}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+        <Setter Property="ExtendClientAreaToDecorationsHint" Value="True"/>
+        <Setter Property="ExtendClientAreaChromeHints" Value="PreferSystemChrome"/>
+        <Setter Property="TransparencyLevelHint" Value="Mica, AcrylicBlur"/>
+    </Style>
+    
+    <!-- Card Style -->
+    <Style Selector="Border.Card">
+        <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="BoxShadow" Value="0 4 6 0 #33000000"/>
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" Easing="CircularEaseOut"/>
+                <BoxShadowsTransition Property="BoxShadow" Duration="0:0:0.2"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    <Style Selector="Border.Card:pointerover">
+        <Setter Property="RenderTransform" Value="scale(1.02)"/>
+        <Setter Property="BoxShadow" Value="0 10 15 0 #44000000"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <!-- Primary Button Style -->
+    <Style Selector="Button.Primary">
+        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="20,10"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="0:0:0.2"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    <Style Selector="Button.Primary:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource PrimaryDarkBrush}"/>
+    </Style>
+</Styles>

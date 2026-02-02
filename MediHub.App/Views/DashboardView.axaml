@@ -1,0 +1,146 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MediHub.App.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MediHub.App.Views.DashboardView">
+    
+    <ScrollViewer>
+        <StackPanel Spacing="24">
+            <!-- Header -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Good Morning, Dr. Smith" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                <TextBlock Text="Here's what's happening today." FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}"/>
+            </StackPanel>
+
+            <!-- Stats Grid -->
+            <Grid ColumnDefinitions="*, 20, *, 20, *, 20, *">
+                <!-- Appointment Stat -->
+                <Border Classes="Card" Grid.Column="0">
+                    <StackPanel Spacing="12">
+                        <Border Width="40" Height="40" CornerRadius="20" Background="#2010B981" HorizontalAlignment="Left">
+                           <PathIcon Data="{StaticResource IconCalendar}" Foreground="{DynamicResource PrimaryBrush}" Width="20" Height="20"/>
+                        </Border>
+                        <TextBlock Text="12" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBlock Text="Appointments Today" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Pending Reports -->
+                <Border Classes="Card" Grid.Column="2">
+                     <StackPanel Spacing="12">
+                        <Border Width="40" Height="40" CornerRadius="20" Background="#203B82F6" HorizontalAlignment="Left">
+                           <PathIcon Data="{StaticResource IconDocument}" Foreground="#3B82F6" Width="20" Height="20"/>
+                        </Border>
+                        <TextBlock Text="5" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBlock Text="Pending Reports" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                    </StackPanel>
+                </Border>
+
+                 <!-- New Patients -->
+                <Border Classes="Card" Grid.Column="4">
+                     <StackPanel Spacing="12">
+                        <Border Width="40" Height="40" CornerRadius="20" Background="#208B5CF6" HorizontalAlignment="Left">
+                           <PathIcon Data="{StaticResource IconUser}" Foreground="#8B5CF6" Width="20" Height="20"/>
+                        </Border>
+                        <TextBlock Text="3" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBlock Text="New Patients" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                    </StackPanel>
+                </Border>
+                
+                 <!-- Revenue -->
+                <Border Classes="Card" Grid.Column="6">
+                     <StackPanel Spacing="12">
+                        <Border Width="40" Height="40" CornerRadius="20" Background="#20F59E0B" HorizontalAlignment="Left">
+                           <PathIcon Data="{StaticResource IconChart}" Foreground="#F59E0B" Width="20" Height="20"/>
+                        </Border>
+                        <TextBlock Text="$2.4k" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBlock Text="Revenue Today" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            
+            <!-- Main Content Area -->
+            <Grid ColumnDefinitions="2*, 24, *">
+                
+                <!-- Upcoming Appointments -->
+                <Border Classes="Card" Grid.Column="0">
+                    <StackPanel Spacing="16">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <TextBlock Text="Upcoming Appointments" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                            <Button Content="View All" Classes="Link" Foreground="{DynamicResource PrimaryBrush}"/>
+                        </Grid>
+                        
+                        <!-- List -->
+                        <StackPanel Spacing="12">
+                             <!-- Item 1 -->
+                            <Grid ColumnDefinitions="Auto, *, Auto">
+                                <TextBlock Text="09:00 AM" FontWeight="Medium" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Width="80"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="Sarah Johnson" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                    <TextBlock Text="General Checkup" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                </StackPanel>
+                                <Border Grid.Column="2" Background="#2010B981" CornerRadius="4" Padding="8 4">
+                                    <TextBlock Text="Confirmed" Foreground="{DynamicResource PrimaryBrush}" FontSize="12" FontWeight="SemiBold"/>
+                                </Border>
+                            </Grid>
+                            <Border Height="1" Background="{DynamicResource SurfaceLightBrush}"/>
+                            
+                             <!-- Item 2 -->
+                            <Grid ColumnDefinitions="Auto, *, Auto">
+                                <TextBlock Text="10:30 AM" FontWeight="Medium" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Width="80"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="Michael Chen" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                    <TextBlock Text="Dental Cleaning" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                </StackPanel>
+                                <Border Grid.Column="2" Background="#20F59E0B" CornerRadius="4" Padding="8 4">
+                                    <TextBlock Text="Pending" Foreground="#F59E0B" FontSize="12" FontWeight="SemiBold"/>
+                                </Border>
+                            </Grid>
+                            <Border Height="1" Background="{DynamicResource SurfaceLightBrush}"/>
+                            
+                             <!-- Item 3 -->
+                            <Grid ColumnDefinitions="Auto, *, Auto">
+                                <TextBlock Text="02:00 PM" FontWeight="Medium" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Width="80"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="Emma Wilson" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                    <TextBlock Text="Annual Physical" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                </StackPanel>
+                                <Border Grid.Column="2" Background="#2010B981" CornerRadius="4" Padding="8 4">
+                                    <TextBlock Text="Confirmed" Foreground="{DynamicResource PrimaryBrush}" FontSize="12" FontWeight="SemiBold"/>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Quick Actions / Notifications -->
+                <StackPanel Grid.Column="2" Spacing="24">
+                    <Border Classes="Card">
+                        <StackPanel Spacing="16">
+                            <TextBlock Text="Quick Actions" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                            <UniformGrid Columns="2" Rows="2">
+                                <Button Content="New Appt" Margin="0 0 8 8" HorizontalAlignment="Stretch"/>
+                                <Button Content="New Patient" Margin="8 0 0 8" HorizontalAlignment="Stretch"/>
+                                <Button Content="Create Bill" Margin="0 8 8 0" HorizontalAlignment="Stretch"/>
+                                <Button Content="Add Note" Margin="8 8 0 0" HorizontalAlignment="Stretch"/>
+                            </UniformGrid>
+                        </StackPanel>
+                    </Border>
+                    
+                    <Border Classes="Card">
+                         <StackPanel Spacing="16">
+                            <TextBlock Text="Recent Activity" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                            <StackPanel Spacing="12">
+                                <TextBlock Text="Dr. Smith updated patient record #4023" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" TextWrapping="Wrap"/>
+                                <TextBlock Text="System backup completed successfully" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" TextWrapping="Wrap"/>
+                                <TextBlock Text="New lab results available for Jane Doe" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,80 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MediHub.App.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MediHub.App.Views.PatientListView"
+             x:DataType="vm:PatientListViewModel">
+
+  <UserControl.DataContext>
+    <vm:PatientListViewModel />
+  </UserControl.DataContext>
+
+  <ScrollViewer>
+      <StackPanel Margin="0">
+        <!-- Header / Actions -->
+        <Grid ColumnDefinitions="*, Auto" Margin="0 0 0 24">
+            <StackPanel>
+                <TextBlock Text="Patient Records" FontSize="20" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                <TextBlock Text="Manage active patient files" FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0 4 0 0"/>
+            </StackPanel>
+            
+            <Button Grid.Column="1" Classes="Primary" Content="Refresh Data" Click="LoadPatients_Click"/>
+        </Grid>
+
+        <!-- Loading / Empty State -->
+        <TextBlock Text="No patients loaded. Click Refresh to load data from API." 
+                   IsVisible="{Binding !Patients.Count}" 
+                   Foreground="{DynamicResource TextSecondaryBrush}" 
+                   HorizontalAlignment="Center" 
+                   Margin="0 40 0 0"/>
+
+        <!-- Patient Cards -->
+        <ItemsControl ItemsSource="{Binding Patients}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Classes="Card" Width="280" Margin="0 0 20 20">
+                        <StackPanel Spacing="16">
+                            <!-- Header -->
+                            <Grid ColumnDefinitions="Auto, *">
+                                <Border Width="48" Height="48" CornerRadius="24" Background="{DynamicResource PrimaryLightColor}">
+                                    <TextBlock Text="PT" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#0F172A"/>
+                                </Border>
+                                <StackPanel Grid.Column="1" Margin="12 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding LastName}" FontWeight="Bold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                    <TextBlock Text="{Binding FirstName}" FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                </StackPanel>
+                            </Grid>
+                            
+                            <!-- Details -->
+                            <StackPanel Spacing="8">
+                                <Border Background="#10FFFFFF" CornerRadius="4" Padding="8 4">
+                                    <Grid ColumnDefinitions="Auto, *">
+                                        <TextBlock Text="DOB" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding DateOfBirth, StringFormat='{}{0:d}'}" HorizontalAlignment="Right" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="12"/>
+                                    </Grid>
+                                </Border>
+                                 <Border Background="#10FFFFFF" CornerRadius="4" Padding="8 4">
+                                    <Grid ColumnDefinitions="Auto, *">
+                                        <TextBlock Text="Gender" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Gender}" HorizontalAlignment="Right" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="12"/>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Actions -->
+                            <Button Content="View Record" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </StackPanel>
+  </ScrollViewer>
+</UserControl>
