@@ -24,6 +24,8 @@ The solution is divided into several focused projects:
 *   **MediHub.Database**: Database context and migration management.
 
 ## Getting Started
+<img width="1909" height="1018" alt="image" src="https://github.com/user-attachments/assets/d2023c33-2cb3-489e-bb37-f10b6aaa1b4e" />
+<img width="1910" height="1021" alt="image" src="https://github.com/user-attachments/assets/d447925b-89cd-4ed9-acb9-6ee18fcfb6e3" />
 
 ### Prerequisites
 
