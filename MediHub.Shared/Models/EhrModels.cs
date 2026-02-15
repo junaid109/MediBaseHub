@@ -24,3 +24,12 @@ public class Document
     public DateTime UploadedAt { get; set; }
     public string Category { get; set; } = string.Empty;
 }
+
+public class Appointment
+{
+    public string PatientName { get; set; } = string.Empty;
+    public string Reason { get; set; } = string.Empty;
+    public DateTime Time { get; set; }
+    public string Status { get; set; } = "Confirmed";
+    public string Type { get; set; } = "Consultation";
+}

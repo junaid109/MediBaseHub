@@ -44,6 +44,9 @@ public partial class MainLayoutView : UserControl
                  case "Dashboard":
                     contentControl.Content = new DashboardView();
                     break;
+                  case "Schedule":
+                     contentControl.Content = new SchedulerView();
+                     break;
                  case "Patients":
                     contentControl.Content = new PatientListView();
                     break;

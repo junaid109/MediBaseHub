@@ -10,8 +10,8 @@
         <StackPanel Spacing="24">
             <!-- Header -->
             <StackPanel Spacing="4">
-                <TextBlock Text="Good Morning, Dr. Smith" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                <TextBlock Text="Here's what's happening today." FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                <TextBlock Text="Welcome back, Dr. Smith" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                <TextBlock Text="System status: Online • Last sync: 2 mins ago" FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}"/>
             </StackPanel>
 
             <!-- Stats Grid -->
@@ -19,44 +19,44 @@
                 <!-- Appointment Stat -->
                 <Border Classes="Card" Grid.Column="0">
                     <StackPanel Spacing="12">
-                        <Border Width="40" Height="40" CornerRadius="20" Background="#2010B981" HorizontalAlignment="Left">
+                        <Border Width="44" Height="44" CornerRadius="12" Background="#20135BEC" HorizontalAlignment="Left">
                            <PathIcon Data="{StaticResource IconCalendar}" Foreground="{DynamicResource PrimaryBrush}" Width="20" Height="20"/>
                         </Border>
-                        <TextBlock Text="12" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                        <TextBlock Text="Appointments Today" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock Text="14" FontSize="32" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBlock Text="Today's Appointments" FontSize="13" Foreground="{DynamicResource TextSecondaryBrush}"/>
                     </StackPanel>
                 </Border>
                 
                 <!-- Pending Reports -->
                 <Border Classes="Card" Grid.Column="2">
                      <StackPanel Spacing="12">
-                        <Border Width="40" Height="40" CornerRadius="20" Background="#203B82F6" HorizontalAlignment="Left">
-                           <PathIcon Data="{StaticResource IconDocument}" Foreground="#3B82F6" Width="20" Height="20"/>
+                        <Border Width="44" Height="44" CornerRadius="12" Background="#20135BEC" HorizontalAlignment="Left">
+                           <PathIcon Data="{StaticResource IconDocument}" Foreground="{DynamicResource PrimaryBrush}" Width="20" Height="20"/>
                         </Border>
-                        <TextBlock Text="5" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                        <TextBlock Text="Pending Reports" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock Text="6" FontSize="32" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBlock Text="Reports to Review" FontSize="13" Foreground="{DynamicResource TextSecondaryBrush}"/>
                     </StackPanel>
                 </Border>
 
                  <!-- New Patients -->
                 <Border Classes="Card" Grid.Column="4">
                      <StackPanel Spacing="12">
-                        <Border Width="40" Height="40" CornerRadius="20" Background="#208B5CF6" HorizontalAlignment="Left">
-                           <PathIcon Data="{StaticResource IconUser}" Foreground="#8B5CF6" Width="20" Height="20"/>
+                        <Border Width="44" Height="44" CornerRadius="12" Background="#20135BEC" HorizontalAlignment="Left">
+                           <PathIcon Data="{StaticResource IconUser}" Foreground="{DynamicResource PrimaryBrush}" Width="20" Height="20"/>
                         </Border>
-                        <TextBlock Text="3" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                        <TextBlock Text="New Patients" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock Text="4" FontSize="32" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBlock Text="New Patient Onboarding" FontSize="13" Foreground="{DynamicResource TextSecondaryBrush}"/>
                     </StackPanel>
                 </Border>
                 
                  <!-- Revenue -->
                 <Border Classes="Card" Grid.Column="6">
                      <StackPanel Spacing="12">
-                        <Border Width="40" Height="40" CornerRadius="20" Background="#20F59E0B" HorizontalAlignment="Left">
-                           <PathIcon Data="{StaticResource IconChart}" Foreground="#F59E0B" Width="20" Height="20"/>
+                        <Border Width="44" Height="44" CornerRadius="12" Background="#20135BEC" HorizontalAlignment="Left">
+                           <PathIcon Data="{StaticResource IconChart}" Foreground="{DynamicResource PrimaryBrush}" Width="20" Height="20"/>
                         </Border>
-                        <TextBlock Text="$2.4k" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                        <TextBlock Text="Revenue Today" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock Text="$3.1k" FontSize="32" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBlock Text="Estimated Revenue" FontSize="13" Foreground="{DynamicResource TextSecondaryBrush}"/>
                     </StackPanel>
                 </Border>
             </Grid>
@@ -68,8 +68,8 @@
                 <Border Classes="Card" Grid.Column="0">
                     <StackPanel Spacing="16">
                         <Grid ColumnDefinitions="*, Auto">
-                            <TextBlock Text="Upcoming Appointments" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                            <Button Content="View All" Classes="Link" Foreground="{DynamicResource PrimaryBrush}"/>
+                            <TextBlock Text="Recent Appointments" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                            <Button Content="Calendar View" Classes="Link" Foreground="{DynamicResource PrimaryBrush}"/>
                         </Grid>
                         
                         <!-- List -->
@@ -79,9 +79,9 @@
                                 <TextBlock Text="09:00 AM" FontWeight="Medium" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Width="80"/>
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                     <TextBlock Text="Sarah Johnson" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                    <TextBlock Text="General Checkup" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="Post-Op Consultation" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
                                 </StackPanel>
-                                <Border Grid.Column="2" Background="#2010B981" CornerRadius="4" Padding="8 4">
+                                <Border Grid.Column="2" Background="#20135BEC" CornerRadius="4" Padding="8 4">
                                     <TextBlock Text="Confirmed" Foreground="{DynamicResource PrimaryBrush}" FontSize="12" FontWeight="SemiBold"/>
                                 </Border>
                             </Grid>
@@ -92,10 +92,10 @@
                                 <TextBlock Text="10:30 AM" FontWeight="Medium" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Width="80"/>
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                     <TextBlock Text="Michael Chen" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                    <TextBlock Text="Dental Cleaning" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="Follow-up: Diabetes Mgt" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
                                 </StackPanel>
-                                <Border Grid.Column="2" Background="#20F59E0B" CornerRadius="4" Padding="8 4">
-                                    <TextBlock Text="Pending" Foreground="#F59E0B" FontSize="12" FontWeight="SemiBold"/>
+                                <Border Grid.Column="2" Background="#20135BEC" CornerRadius="4" Padding="8 4">
+                                    <TextBlock Text="Arrived" Foreground="{DynamicResource PrimaryBrush}" FontSize="12" FontWeight="SemiBold"/>
                                 </Border>
                             </Grid>
                             <Border Height="1" Background="{DynamicResource SurfaceLightBrush}"/>
@@ -105,9 +105,9 @@
                                 <TextBlock Text="02:00 PM" FontWeight="Medium" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Width="80"/>
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                     <TextBlock Text="Emma Wilson" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                    <TextBlock Text="Annual Physical" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="New Patient Intake" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
                                 </StackPanel>
-                                <Border Grid.Column="2" Background="#2010B981" CornerRadius="4" Padding="8 4">
+                                <Border Grid.Column="2" Background="#20135BEC" CornerRadius="4" Padding="8 4">
                                     <TextBlock Text="Confirmed" Foreground="{DynamicResource PrimaryBrush}" FontSize="12" FontWeight="SemiBold"/>
                                 </Border>
                             </Grid>
@@ -119,23 +119,23 @@
                 <StackPanel Grid.Column="2" Spacing="24">
                     <Border Classes="Card">
                         <StackPanel Spacing="16">
-                            <TextBlock Text="Quick Actions" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                            <UniformGrid Columns="2" Rows="2">
-                                <Button Content="New Appt" Margin="0 0 8 8" HorizontalAlignment="Stretch"/>
-                                <Button Content="New Patient" Margin="8 0 0 8" HorizontalAlignment="Stretch"/>
-                                <Button Content="Create Bill" Margin="0 8 8 0" HorizontalAlignment="Stretch"/>
-                                <Button Content="Add Note" Margin="8 8 0 0" HorizontalAlignment="Stretch"/>
+                            <TextBlock Text="Operational Controls" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                            <UniformGrid Columns="2">
+                                <Button Classes="Primary" Content="Schedule" Margin="0 0 8 8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                                <Button Classes="Primary" Content="Register" Margin="8 0 0 8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                                <Button Classes="Primary" Content="Billing" Margin="0 8 8 0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                                <Button Classes="Primary" Content="Logs" Margin="8 8 0 0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
                             </UniformGrid>
                         </StackPanel>
                     </Border>
                     
                     <Border Classes="Card">
                          <StackPanel Spacing="16">
-                            <TextBlock Text="Recent Activity" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                            <TextBlock Text="System Notifications" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
                             <StackPanel Spacing="12">
-                                <TextBlock Text="Dr. Smith updated patient record #4023" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" TextWrapping="Wrap"/>
-                                <TextBlock Text="System backup completed successfully" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" TextWrapping="Wrap"/>
-                                <TextBlock Text="New lab results available for Jane Doe" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" TextWrapping="Wrap"/>
+                                <TextBlock Text="Backup completed for Regional Database." Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" TextWrapping="Wrap"/>
+                                <TextBlock Text="New security updates applied at 04:00 AM." Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" TextWrapping="Wrap"/>
+                                <TextBlock Text="Dr. Smith's shift ends in 4 hours." Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12" TextWrapping="Wrap"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>

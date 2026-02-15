@@ -12,25 +12,34 @@
   </UserControl.DataContext>
 
   <ScrollViewer>
-      <StackPanel Margin="0">
-        <!-- Header / Actions -->
-        <Grid ColumnDefinitions="*, Auto" Margin="0 0 0 24">
-            <StackPanel>
-                <TextBlock Text="Patient Records" FontSize="20" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                <TextBlock Text="Manage active patient files" FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0 4 0 0"/>
+      <StackPanel Spacing="32">
+        <!-- Header / Search -->
+        <Grid ColumnDefinitions="*, Auto">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Patient Directory" FontSize="32" FontWeight="ExtraBold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                <TextBlock Text="Access and search comprehensive patient records across clinical sites." FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}"/>
             </StackPanel>
             
-            <Button Grid.Column="1" Classes="Primary" Content="Refresh Data" Click="LoadPatients_Click"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="12" VerticalAlignment="Bottom">
+                <TextBox Width="300" Watermark="Search by name, ID or DOB..." Classes="Search" VerticalContentAlignment="Center"/>
+                <Button Classes="Primary" Content="Add New Patient" Width="160" Height="40" HorizontalContentAlignment="Center"/>
+            </StackPanel>
         </Grid>
 
-        <!-- Loading / Empty State -->
-        <TextBlock Text="No patients loaded. Click Refresh to load data from API." 
-                   IsVisible="{Binding !Patients.Count}" 
-                   Foreground="{DynamicResource TextSecondaryBrush}" 
-                   HorizontalAlignment="Center" 
-                   Margin="0 40 0 0"/>
+        <!-- Stats / Quick Filters -->
+        <Grid ColumnDefinitions="Auto, Auto, Auto" Margin="0 0 0 8">
+            <Border Background="#10135BEC" CornerRadius="20" Padding="12 6" Margin="0 0 12 0">
+                <TextBlock Text="All Records (1,248)" Foreground="{DynamicResource PrimaryBrush}" FontSize="12" FontWeight="SemiBold"/>
+            </Border>
+            <Border Background="#05FFFFFF" CornerRadius="20" Padding="12 6" Margin="0 0 12 0">
+                <TextBlock Text="Recently Viewed" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12"/>
+            </Border>
+            <Border Background="#05FFFFFF" CornerRadius="20" Padding="12 6">
+                <TextBlock Text="Critical Care" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12"/>
+            </Border>
+        </Grid>
 
-        <!-- Patient Cards -->
+        <!-- Patient Grid -->
         <ItemsControl ItemsSource="{Binding Patients}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -39,41 +48,46 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border Classes="Card" Width="280" Margin="0 0 20 20">
-                        <StackPanel Spacing="16">
-                            <!-- Header -->
-                            <Grid ColumnDefinitions="Auto, *">
-                                <Border Width="48" Height="48" CornerRadius="24" Background="{DynamicResource PrimaryLightColor}">
-                                    <TextBlock Text="PT" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#0F172A"/>
+                    <Border Classes="Card" Width="320" Margin="0 0 24 24">
+                        <StackPanel Spacing="20">
+                            <!-- Profile Section -->
+                            <Grid ColumnDefinitions="64, *">
+                                <Border Width="64" Height="64" CornerRadius="32" Background="#20135BEC">
+                                    <TextBlock Text="{Binding LastName[0]}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource PrimaryBrush}"/>
                                 </Border>
-                                <StackPanel Grid.Column="1" Margin="12 0 0 0" VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding LastName}" FontWeight="Bold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                    <TextBlock Text="{Binding FirstName}" FontSize="14" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                <StackPanel Grid.Column="1" Margin="16 0 0 0" VerticalAlignment="Center" Spacing="2">
+                                    <TextBlock Text="{Binding FirstName} {Binding LastName}" FontWeight="Bold" FontSize="18" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                    <TextBlock Text="ID: PH-9902-12" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
                                 </StackPanel>
                             </Grid>
                             
-                            <!-- Details -->
-                            <StackPanel Spacing="8">
-                                <Border Background="#10FFFFFF" CornerRadius="4" Padding="8 4">
-                                    <Grid ColumnDefinitions="Auto, *">
-                                        <TextBlock Text="DOB" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding DateOfBirth, StringFormat='{}{0:d}'}" HorizontalAlignment="Right" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="12"/>
-                                    </Grid>
-                                </Border>
-                                 <Border Background="#10FFFFFF" CornerRadius="4" Padding="8 4">
-                                    <Grid ColumnDefinitions="Auto, *">
-                                        <TextBlock Text="Gender" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="12"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding Gender}" HorizontalAlignment="Right" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="12"/>
-                                    </Grid>
-                                </Border>
-                            </StackPanel>
+                            <!-- Detailed Stats -->
+                            <UniformGrid Columns="2" Rows="2">
+                                <StackPanel Margin="0 0 8 12">
+                                    <TextBlock Text="AGE / GENDER" FontSize="10" FontWeight="Bold" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="38 / Female" FontSize="13" Foreground="{DynamicResource TextPrimaryBrush}" Margin="0 2 0 0"/>
+                                </StackPanel>
+                                <StackPanel Margin="8 0 0 12">
+                                    <TextBlock Text="LAST VISIT" FontSize="10" FontWeight="Bold" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="Jan 12, 2024" FontSize="13" Foreground="{DynamicResource TextPrimaryBrush}" Margin="0 2 0 0"/>
+                                </StackPanel>
+                                <StackPanel Margin="0 12 8 0">
+                                    <TextBlock Text="CONTACT" FontSize="10" FontWeight="Bold" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="+1 202-555-010" FontSize="12" Foreground="{DynamicResource TextPrimaryBrush}" Margin="0 2 0 0" TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+                                <StackPanel Margin="8 12 0 0">
+                                    <TextBlock Text="STATUS" FontSize="10" FontWeight="Bold" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="Stable" FontSize="12" Foreground="#10B981" Margin="0 2 0 0" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </UniformGrid>
 
-                            <!-- Actions -->
-                            <Button Content="View Record" 
-        HorizontalAlignment="Stretch" 
-        HorizontalContentAlignment="Center"
-        Command="{Binding $parent[UserControl].((vm:PatientListViewModel)DataContext).ViewPatientCommand}"
-        CommandParameter="{Binding .}"/>
+                            <!-- Footer Action -->
+                            <Button Content="Open Clinical Profile" 
+                                    Classes="Primary"
+                                    HorizontalAlignment="Stretch" 
+                                    HorizontalContentAlignment="Center"
+                                    Command="{Binding $parent[UserControl].((vm:PatientListViewModel)DataContext).ViewPatientCommand}"
+                                    CommandParameter="{Binding .}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>

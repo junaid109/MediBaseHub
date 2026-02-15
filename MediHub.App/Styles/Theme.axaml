@@ -3,10 +3,10 @@
     <StyleInclude Source="avares://Avalonia.Themes.Fluent/FluentTheme.xaml"/>
     
     <Styles.Resources>
-        <!-- Primary Colors (Teal/Emerald Modern) -->
-        <Color x:Key="PrimaryColor">#10B981</Color>
-        <Color x:Key="PrimaryDarkColor">#059669</Color>
-        <Color x:Key="PrimaryLightColor">#34D399</Color>
+        <!-- Primary Colors (Modern Blue) -->
+        <Color x:Key="PrimaryColor">#135BEC</Color>
+        <Color x:Key="PrimaryDarkColor">#0D4AC2</Color>
+        <Color x:Key="PrimaryLightColor">#4D8DFB</Color>
         
         <!-- Background Colors (Dark/Slate) -->
         <Color x:Key="BackgroundColor">#0F172A</Color>
@@ -20,6 +20,7 @@
         <!-- Brushes -->
         <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
         <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDarkColor}"/>
+        <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLightColor}"/>
         <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
         <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}"/>
         <SolidColorBrush x:Key="SurfaceLightBrush" Color="{StaticResource SurfaceLightColor}"/>
@@ -27,7 +28,7 @@
         <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}"/>
         
         <!-- Fonts -->
-        <FontFamily x:Key="MainFont">Segoe UI, Inter, Roboto, Arial</FontFamily>
+        <FontFamily x:Key="MainFont">avares://MediHub.App/Assets/Fonts#Manrope, Segoe UI, Inter, Roboto, Arial</FontFamily>
         
         <!-- Icons -->
         <StreamGeometry x:Key="IconCalendar">M19,4H18V2H16V4H8V2H6V4H5C3.89,4 3,4.9 3,6V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V6A2,2 0 0,0 19,4M19,20H5V10H19V20M19,8H5V6H19V8M9,14H7V12H9V14M13,14H11V12H13V14M17,14H15V12H17V14M9,18H7V16H9V18M13,18H11V16H13V18M17,18H15V16H17V18Z</StreamGeometry>
@@ -49,7 +50,7 @@
     <!-- Card Style -->
     <Style Selector="Border.Card">
         <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
-        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="CornerRadius" Value="8"/>
         <Setter Property="Padding" Value="16"/>
         <Setter Property="BoxShadow" Value="0 4 6 0 #33000000"/>
         <Setter Property="Transitions">
