@@ -33,11 +33,11 @@
                     </Border>
                     
                     <StackPanel VerticalAlignment="Center" Spacing="4">
-                        <TextBlock Text="{Binding SelectedPatient.FirstName, StringFormat='{}{0} Johnson'}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                        <TextBlock Text="{Binding SelectedPatient.FirstName, StringFormat='{}{0}'}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
                         <StackPanel Orientation="Horizontal" Spacing="16">
-                            <TextBlock Text="Female, 38 yrs" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                            <TextBlock Text="{Binding SelectedPatient.Gender}" Foreground="{DynamicResource TextSecondaryBrush}"/>
                             <TextBlock Text="•" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                            <TextBlock Text="DOB: Apr 12, 1985" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                            <TextBlock Text="{Binding SelectedPatient.DateOfBirth, StringFormat='{}DOB: {0:MMM dd, yyyy}'}" Foreground="{DynamicResource TextSecondaryBrush}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Spacing="16" Margin="0 4 0 0">
                              <Border Background="#2010B981" CornerRadius="4" Padding="6 2">
@@ -71,28 +71,22 @@
                                     <TextBlock Text="Today, 09:30 AM" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
                                 </Grid>
                                 
-                                <Grid ColumnDefinitions="*,*,*,*">
-                                    <StackPanel>
-                                        <TextBlock Text="BP" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        <TextBlock Text="120/80" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                        <TextBlock Text="mmHg" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                    </StackPanel>
-                                    <StackPanel>
-                                        <TextBlock Text="Heart Rate" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        <TextBlock Text="72" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                        <TextBlock Text="bpm" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                    </StackPanel>
-                                    <StackPanel>
-                                        <TextBlock Text="Temp" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        <TextBlock Text="98.6" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                        <TextBlock Text="°F" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                    </StackPanel>
-                                     <StackPanel>
-                                        <TextBlock Text="Weight" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        <TextBlock Text="68" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                        <TextBlock Text="kg" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                    </StackPanel>
-                                </Grid>
+                                <ItemsControl ItemsSource="{Binding Vitals}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="4"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Name}" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                                <TextBlock Text="{Binding Value}" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                                <TextBlock Text="{Binding Unit}" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </StackPanel>
                         </Border>
 
@@ -100,28 +94,24 @@
                          <Border Classes="Card">
                             <StackPanel Spacing="16">
                                 <TextBlock Text="Active Problems" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                <StackPanel Spacing="12">
-                                     <Grid ColumnDefinitions="*, Auto">
-                                        <StackPanel>
-                                            <TextBlock Text="Hypertension" FontWeight="Medium" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                            <TextBlock Text="Diagnosed: Jan 2023" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        </StackPanel>
-                                        <Border Background="#20F59E0B" CornerRadius="4" Padding="6 2" VerticalAlignment="Top">
-                                            <TextBlock Text="Moderate" FontSize="11" Foreground="#F59E0B" FontWeight="SemiBold"/>
-                                        </Border>
-                                    </Grid>
-                                    <Border Height="1" Background="{DynamicResource SurfaceLightBrush}"/>
-                                    
-                                     <Grid ColumnDefinitions="*, Auto">
-                                        <StackPanel>
-                                            <TextBlock Text="Type 2 Diabetes" FontWeight="Medium" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                            <TextBlock Text="Diagnosed: Mar 2021" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        </StackPanel>
-                                        <Border Background="#20EF4444" CornerRadius="4" Padding="6 2" VerticalAlignment="Top">
-                                            <TextBlock Text="Severe" FontSize="11" Foreground="#EF4444" FontWeight="SemiBold"/>
-                                        </Border>
-                                    </Grid>
-                                </StackPanel>
+                                <ItemsControl ItemsSource="{Binding Problems}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <Grid ColumnDefinitions="*, Auto">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding Description}" FontWeight="Medium" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                                        <TextBlock Text="{Binding DiagnosedDate, StringFormat='{}Diagnosed: {0:MMM yyyy}'}" FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                                    </StackPanel>
+                                                    <Border Background="#20F59E0B" CornerRadius="4" Padding="6 2" VerticalAlignment="Top">
+                                                        <TextBlock Text="{Binding Severity}" FontSize="11" Foreground="#F59E0B" FontWeight="SemiBold"/>
+                                                    </Border>
+                                                </Grid>
+                                                <Border Height="1" Background="{DynamicResource SurfaceLightBrush}" Margin="0 8"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </StackPanel>
                         </Border>
                     </StackPanel>
@@ -135,11 +125,11 @@
                                 <StackPanel Spacing="12">
                                     <Grid ColumnDefinitions="24, *">
                                         <PathIcon Data="{StaticResource IconUser}" Width="16" Height="16" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        <TextBlock Grid.Column="1" Text="+1 (555) 0123-4567" Margin="12 0 0 0" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding SelectedPatient.PhoneNumber}" Margin="12 0 0 0" Foreground="{DynamicResource TextPrimaryBrush}"/>
                                     </Grid>
                                     <Grid ColumnDefinitions="24, *">
                                         <PathIcon Data="{StaticResource IconDocument}" Width="16" Height="16" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                        <TextBlock Grid.Column="1" Text="sarah.j@example.com" Margin="12 0 0 0" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding SelectedPatient.Email}" Margin="12 0 0 0" Foreground="{DynamicResource TextPrimaryBrush}"/>
                                     </Grid>
                                      <Grid ColumnDefinitions="24, *">
                                         <PathIcon Data="{StaticResource IconCalendar}" Width="16" Height="16" Foreground="{DynamicResource TextSecondaryBrush}"/>
@@ -156,22 +146,19 @@
                                     <TextBlock Text="Recent Documents" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource TextPrimaryBrush}"/>
                                     <Button Classes="Link" Content="Upload" FontSize="12" Foreground="{DynamicResource PrimaryBrush}"/>
                                 </Grid>
-                                <StackPanel Spacing="8">
-                                    <Border Background="#10FFFFFF" CornerRadius="6" Padding="8">
-                                        <Grid ColumnDefinitions="Auto, *, Auto">
-                                             <PathIcon Data="{StaticResource IconDocument}" Width="16" Height="16" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                             <TextBlock Grid.Column="1" Text="BloodTest_Results.pdf" Margin="12 0" VerticalAlignment="Center" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                             <TextBlock Grid.Column="2" Text="Yesterday" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </Border>
-                                     <Border Background="#10FFFFFF" CornerRadius="6" Padding="8">
-                                        <Grid ColumnDefinitions="Auto, *, Auto">
-                                             <PathIcon Data="{StaticResource IconDocument}" Width="16" Height="16" Foreground="{DynamicResource TextSecondaryBrush}"/>
-                                             <TextBlock Grid.Column="1" Text="XRay_Report.pdf" Margin="12 0" VerticalAlignment="Center" Foreground="{DynamicResource TextPrimaryBrush}"/>
-                                             <TextBlock Grid.Column="2" Text="Jan 15" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </Border>
-                                </StackPanel>
+                                <ItemsControl ItemsSource="{Binding Documents}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="#10FFFFFF" CornerRadius="6" Padding="8" Margin="0 4">
+                                                <Grid ColumnDefinitions="Auto, *, Auto">
+                                                     <PathIcon Data="{StaticResource IconDocument}" Width="16" Height="16" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                                     <TextBlock Grid.Column="1" Text="{Binding FileName}" Margin="12 0" VerticalAlignment="Center" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                                                     <TextBlock Grid.Column="2" Text="{Binding UploadedAt, StringFormat='{}{0:MMM dd}'}" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </StackPanel>
                         </Border>
                     </StackPanel>
