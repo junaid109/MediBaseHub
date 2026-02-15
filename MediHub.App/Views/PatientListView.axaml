@@ -69,7 +69,11 @@
                             </StackPanel>
 
                             <!-- Actions -->
-                            <Button Content="View Record" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+                            <Button Content="View Record" 
+        HorizontalAlignment="Stretch" 
+        HorizontalContentAlignment="Center"
+        Command="{Binding $parent[UserControl].((vm:PatientListViewModel)DataContext).ViewPatientCommand}"
+        CommandParameter="{Binding .}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>

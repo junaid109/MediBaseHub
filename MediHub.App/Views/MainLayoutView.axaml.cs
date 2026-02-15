@@ -2,6 +2,9 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
+using CommunityToolkit.Mvvm.Messaging;
+using MediHub.App.Messages;
+
 namespace MediHub.App.Views;
 
 public partial class MainLayoutView : UserControl
@@ -16,6 +19,15 @@ public partial class MainLayoutView : UserControl
         {
              content.Content = new DashboardView();
         }
+
+        // Register for Navigation
+        WeakReferenceMessenger.Default.Register<NavigationMessage>(this, (r, m) =>
+        {
+            if (content != null && m.Value is Control view)
+            {
+                content.Content = view;
+            }
+        });
     }
 
     private void OnNavigationChanged(object sender, SelectionChangedEventArgs e)
